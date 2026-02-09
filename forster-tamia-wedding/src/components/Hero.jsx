@@ -226,7 +226,7 @@ const styles = {
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        filter: "brightness(0.7)",
+        filter: "brightness(0.85)",
     },
     overlay: {
         position: "absolute",
@@ -234,7 +234,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        background: "linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(26, 26, 26, 0.8) 50%, rgba(212, 175, 55, 0.3) 100%)",
+        background: "linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(26, 26, 26, 0.4) 50%, rgba(212, 175, 55, 0.2) 100%)",
         zIndex: 1,
     },
     content: {

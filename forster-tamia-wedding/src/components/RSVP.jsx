@@ -6,8 +6,7 @@ export default function RSVP() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     const [formData, setFormData] = useState({
-        name: "",
-        surname: "",
+        fullName: "",
         phone: "",
     });
 
@@ -25,19 +24,17 @@ export default function RSVP() {
         // Pre-fill name from welcome screen
         const guestName = localStorage.getItem("weddingGuestName");
         if (guestName) {
-            setFormData(prev => ({ ...prev, name: guestName }));
+            setFormData(prev => ({ ...prev, fullName: guestName }));
         }
     }, []);
 
     const validateForm = () => {
         const newErrors = {};
 
-        if (!formData.name.trim()) {
-            newErrors.name = "Name is required";
-        }
-
-        if (!formData.surname.trim()) {
-            newErrors.surname = "Surname is required";
+        if (!formData.fullName.trim()) {
+            newErrors.fullName = "Full name is required";
+        } else if (formData.fullName.trim().split(' ').length < 2) {
+            newErrors.fullName = "Please enter your full name";
         }
 
         if (!formData.phone.trim()) {
@@ -59,15 +56,38 @@ export default function RSVP() {
 
         setIsSubmitting(true);
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            // Submit to Google Sheets
+            // Replace this URL with your Google Apps Script Web App URL
+            const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
 
-        // Save to localStorage
-        localStorage.setItem("weddingRSVP", JSON.stringify(formData));
-        localStorage.setItem("weddingRSVPSubmitted", "true");
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    phone: formData.phone,
+                    timestamp: new Date().toISOString(),
+                }),
+            });
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+            // Save to localStorage
+            localStorage.setItem("weddingRSVP", JSON.stringify(formData));
+            localStorage.setItem("weddingRSVPSubmitted", "true");
+
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Error submitting RSVP:", error);
+            // Still save locally even if submission fails
+            localStorage.setItem("weddingRSVP", JSON.stringify(formData));
+            localStorage.setItem("weddingRSVPSubmitted", "true");
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+        }
     };
 
     const handleChange = (e) => {
@@ -105,7 +125,7 @@ export default function RSVP() {
                         </p>
 
                         <div style={styles.confirmationDetails}>
-                            <p><strong>Name:</strong> {formData.name} {formData.surname}</p>
+                            <p><strong>Name:</strong> {formData.fullName}</p>
                             <p><strong>Phone:</strong> {formData.phone}</p>
                         </div>
 
@@ -143,44 +163,24 @@ export default function RSVP() {
                     transition={{ delay: 0.3, duration: 0.6 }}
                     style={styles.form}
                 >
-                    {/* Name */}
+                    {/* Full Name */}
                     <div style={styles.formGroup}>
-                        <label htmlFor="name" style={styles.label}>
-                            Name *
+                        <label htmlFor="fullName" style={styles.label}>
+                            Full Name *
                         </label>
                         <input
                             type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
+                            id="fullName"
+                            name="fullName"
+                            value={formData.fullName}
                             onChange={handleChange}
                             style={{
                                 ...styles.input,
-                                borderColor: errors.name ? "#ef4444" : "#e5e7eb",
+                                borderColor: errors.fullName ? "#ef4444" : "#e5e7eb",
                             }}
-                            placeholder="Your first name"
+                            placeholder="Your full name"
                         />
-                        {errors.name && <p style={styles.error}>{errors.name}</p>}
-                    </div>
-
-                    {/* Surname */}
-                    <div style={styles.formGroup}>
-                        <label htmlFor="surname" style={styles.label}>
-                            Surname *
-                        </label>
-                        <input
-                            type="text"
-                            id="surname"
-                            name="surname"
-                            value={formData.surname}
-                            onChange={handleChange}
-                            style={{
-                                ...styles.input,
-                                borderColor: errors.surname ? "#ef4444" : "#e5e7eb",
-                            }}
-                            placeholder="Your last name"
-                        />
-                        {errors.surname && <p style={styles.error}>{errors.surname}</p>}
+                        {errors.fullName && <p style={styles.error}>{errors.fullName}</p>}
                     </div>
 
                     {/* Phone */}

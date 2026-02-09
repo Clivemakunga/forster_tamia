@@ -7,22 +7,22 @@ export default function Story() {
 
     const timelineEvents = [
         {
-            year: "2020",
+            year: "August 2025",
             title: "First Meeting",
             description: "Our paths crossed by chance, and a beautiful friendship began.",
         },
         {
-            year: "2023",
+            year: "Late 2025",
             title: "Falling in Love",
             description: "Friendship blossomed into something deeper and more meaningful.",
         },
         {
-            year: "2025",
-            title: "The Proposal",
+            year: "7 February 2026",
+            title: "Lobola",
             description: "A magical moment when forever became a promise.",
         },
         {
-            year: "2027",
+            year: "3 April 2026",
             title: "Our Wedding Day",
             description: "The beginning of our lifelong journey together.",
         },
