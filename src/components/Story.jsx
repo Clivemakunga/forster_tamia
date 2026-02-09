@@ -29,7 +29,7 @@ export default function Story() {
     ];
 
     return (
-        <section ref={ref} style={styles.section}>
+        <section id="story-section" ref={ref} style={styles.section}>
             <div style={styles.container}>
                 {/* Section Header */}
                 <motion.div
@@ -264,7 +264,7 @@ const styles = {
         marginTop: "60px",
         opacity: 0.6,
     },
-};
+    };
 
 // Add hover effect for photo overlay via CSS-in-JS workaround
 if (typeof document !== "undefined") {
@@ -276,4 +276,5 @@ if (typeof document !== "undefined") {
     `;
     document.head.appendChild(style);
 }
+
 

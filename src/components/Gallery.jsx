@@ -15,7 +15,7 @@ export default function Gallery() {
 
     return (
         <>
-            <section ref={ref} style={styles.section}>
+            <section id="gallery-section" ref={ref} style={styles.section}>
                 <div style={styles.container}>
                     {/* Section Header */}
                     <motion.div
@@ -223,5 +223,5 @@ const styles = {
         fontFamily: "'Playfair Display', serif",
         fontWeight: "600",
     },
-};
+    };
 

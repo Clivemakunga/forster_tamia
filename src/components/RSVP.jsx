@@ -108,7 +108,7 @@ export default function RSVP() {
 
     if (isSubmitted) {
         return (
-            <section style={styles.section}>
+            <section id="rsvp-section" style={styles.section}>
                 <div style={styles.container}>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -145,7 +145,7 @@ export default function RSVP() {
     }
 
     return (
-        <section ref={ref} style={styles.section}>
+        <section id="rsvp-section" ref={ref} style={styles.section}>
             <div style={styles.container}>
                 {/* Section Header */}
                 <motion.div

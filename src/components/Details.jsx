@@ -42,7 +42,7 @@ export default function Details() {
     ];
 
     return (
-        <section ref={ref} style={styles.section}>
+        <section id="details-section" ref={ref} style={styles.section}>
             <div style={styles.container}>
                 {/* Section Header */}
                 <motion.div
@@ -257,5 +257,5 @@ const styles = {
         maxWidth: "800px",
         margin: "0 auto",
     },
-};
+    };
 

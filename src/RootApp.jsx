@@ -1,10 +1,6 @@
 import { useState } from "react";
 import WelcomeScreen from "./components/WelcomeScreen";
-import Hero from "./components/Hero";
-import Story from "./components/Story";
-import Details from "./components/Details";
-import Gallery from "./components/Gallery";
-import RSVP from "./components/RSVP";
+import SectionNavigator from "./components/SectionNavigator";
 import MusicButton from "./components/MusicButton";
 
 export default function RootApp() {
@@ -19,11 +15,7 @@ export default function RootApp() {
             <WelcomeScreen onNameSubmit={handleNameSubmit} />
             <div style={{ fontFamily: "'Inter', sans-serif", background: "#faf8f3", color: "#1f2937" }}>
                 <MusicButton />
-                <Hero />
-                <Story />
-                <Details />
-                <Gallery />
-                <RSVP />
+                <SectionNavigator />
 
                 {/* Footer */}
                 <footer style={styles.footer}>

@@ -178,19 +178,8 @@ export default function Hero() {
                 </motion.div>
             </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: [0, 10, 0] }}
-                transition={{
-                    opacity: { delay: 2, duration: 0.5 },
-                    y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                }}
-                style={styles.scrollIndicator}
-            >
-                <div style={styles.scrollArrow}>↓</div>
-                <div style={styles.scrollText}>Scroll to explore</div>
-            </motion.div>
+
+
         </section>
     );
 }
@@ -299,46 +288,56 @@ const styles = {
     countdownItem: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         backdropFilter: "blur(10px)",
-        borderRadius: "12px",
-        padding: "15px 20px",
-        minWidth: "85px",
+        borderRadius: "10px",
+        padding: "10px 14px",
+        minWidth: "60px",
         border: "2px solid rgba(255, 255, 255, 0.2)",
     },
     countdownNumber: {
-        fontSize: "2rem",
+        fontSize: "1.5rem",
         fontWeight: "700",
         color: "#ffffff",
         fontFamily: "'Playfair Display', serif",
     },
     countdownLabel: {
-        fontSize: "0.75rem",
+        fontSize: "0.6rem",
         color: "#faf8f3",
         textTransform: "uppercase",
-        letterSpacing: "1px",
-        marginTop: "5px",
+        letterSpacing: "0.5px",
+        marginTop: "4px",
     },
     countdownDivider: {
-        fontSize: "1.5rem",
+        fontSize: "1.2rem",
         color: "#ffffff",
         fontWeight: "300",
     },
-    scrollIndicator: {
+    scrollButton: {
         position: "absolute",
         bottom: "30px",
         left: "50%",
         transform: "translateX(-50%)",
         textAlign: "center",
+        background: "rgba(255, 255, 255, 0.1)",
+        backdropFilter: "blur(10px)",
+        border: "2px solid rgba(212, 175, 55, 0.5)",
+        borderRadius: "50px",
+        padding: "15px 30px",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        zIndex: 10,
     },
     scrollArrow: {
         fontSize: "1.5rem",
-        color: "#ffffff",
+        color: "#d4af37",
         marginBottom: "5px",
+        fontWeight: "bold",
     },
     scrollText: {
         fontSize: "0.75rem",
         color: "#faf8f3",
         textTransform: "uppercase",
-        letterSpacing: "1px",
+        letterSpacing: "1.5px",
+        fontWeight: "500",
     },
 };
 
