@@ -58,12 +58,13 @@ export default function RSVP() {
 
         try {
             // Submit to Google Sheets
-            // Replace this URL with your Google Apps Script Web App URL
-            const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzu96KaPVFhmIACvQyrE2my1NO2DIfELlbPxDih2pGP3QdUKGhIJN-oyQUZUqkRchvv/exec";
+
+            console.log("� Submitting RSVP to Google Sheets...");
 
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors",
+                mode: "no-cors", // Required for Google Apps Script
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -74,6 +75,9 @@ export default function RSVP() {
                 }),
             });
 
+            console.log("✅ RSVP submitted successfully to Google Sheets!");
+            console.log("Response status:", response.status);
+
             // Save to localStorage
             localStorage.setItem("weddingRSVP", JSON.stringify(formData));
             localStorage.setItem("weddingRSVPSubmitted", "true");
@@ -81,7 +85,9 @@ export default function RSVP() {
             setIsSubmitting(false);
             setIsSubmitted(true);
         } catch (error) {
-            console.error("Error submitting RSVP:", error);
+            console.error("❌ Error submitting RSVP:", error);
+            console.log("💾 Saving locally as backup...");
+
             // Still save locally even if submission fails
             localStorage.setItem("weddingRSVP", JSON.stringify(formData));
             localStorage.setItem("weddingRSVPSubmitted", "true");
