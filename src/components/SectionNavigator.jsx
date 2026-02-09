@@ -45,29 +45,25 @@ export default function SectionNavigator() {
 
     return (
         <div style={styles.container}>
-            {/* Breadcrumb Navigation - Shows unlocked sections */}
-            {unlockedSections.length > 1 && (
+            {/* Back to Start Button - Only on last section */}
+            {currentSection === sections.length - 1 && (
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    style={styles.breadcrumb}
+                    style={styles.backToStartContainer}
                 >
-                    {sections
-                        .filter(section => unlockedSections.includes(section.id))
-                        .map((section) => (
-                            <button
-                                key={section.id}
-                                onClick={() => navigateToSection(section.id)}
-                                style={{
-                                    ...styles.breadcrumbItem,
-                                    ...(currentSection === section.id ? styles.breadcrumbActive : {}),
-                                }}
-                            >
-                                {section.name}
-                            </button>
-                        ))}
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => navigateToSection(0)}
+                        style={styles.backToStartButton}
+                    >
+                        <span style={styles.backIcon}>↑</span>
+                        <span style={styles.backText}>Back to Start</span>
+                    </motion.button>
                 </motion.div>
             )}
+
 
             {/* Current Section */}
             <AnimatePresence mode="wait">
@@ -127,43 +123,36 @@ const styles = {
         minHeight: "100vh",
         overflow: "hidden",
     },
-    breadcrumb: {
+    backToStartContainer: {
         position: "fixed",
-        top: "15px",
+        top: "20px",
         left: "50%",
         transform: "translateX(-50%)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "6px",
         zIndex: 1000,
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
+    },
+    backToStartButton: {
+        background: "rgba(212, 175, 55, 0.2)",
         backdropFilter: "blur(10px)",
-        padding: "8px 16px",
+        border: "2px solid rgba(212, 175, 55, 0.5)",
+        cursor: "pointer",
+        padding: "10px 20px",
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
         borderRadius: "30px",
         boxShadow: "0 2px 10px rgba(0, 0, 0, 0.08)",
-        border: "1px solid rgba(212, 175, 55, 0.2)",
-        maxWidth: "90vw",
-        flexWrap: "wrap",
-    },
-    breadcrumbItem: {
-        padding: "6px 12px",
-        fontSize: "0.7rem",
-        fontWeight: "600",
-        color: "#6b7280",
-        backgroundColor: "transparent",
-        border: "none",
-        borderRadius: "15px",
-        cursor: "pointer",
         transition: "all 0.3s ease",
-        textTransform: "uppercase",
-        letterSpacing: "0.3px",
-        whiteSpace: "nowrap",
+        fontSize: "0.85rem",
+        fontWeight: "600",
+        color: "#1f2937",
     },
-    breadcrumbActive: {
-        color: "#ffffff",
-        backgroundColor: "#d4af37",
-        boxShadow: "0 1px 4px rgba(212, 175, 55, 0.3)",
+    backIcon: {
+        fontSize: "1.2rem",
+        lineHeight: "1",
+    },
+    backText: {
+        textTransform: "uppercase",
+        letterSpacing: "0.5px",
     },
     sectionWrapper: {
         minHeight: "100vh",
