@@ -110,7 +110,7 @@ export default function RSVP() {
                         </div>
 
                         <p style={styles.confirmationNote}>
-                            A confirmation has been saved. See you on February 14, 2027! ❤️
+                            A confirmation has been saved. See you on 3 April 2026! ❤️
                         </p>
                     </motion.div>
                 </div>
@@ -247,13 +247,13 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #f97316, transparent)",
+        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "15px",
     },
     subtitle: {
@@ -349,7 +349,7 @@ const styles = {
     confirmationTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2.5rem",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "20px",
     },
     confirmationText: {
@@ -367,7 +367,7 @@ const styles = {
     },
     confirmationNote: {
         fontSize: "1rem",
-        color: "#f97316",
+        color: "#d4af37",
         fontWeight: "600",
     },
 };

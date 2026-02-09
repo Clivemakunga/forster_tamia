@@ -113,13 +113,13 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #f97316, transparent)",
+        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "15px",
     },
     subtitle: {
@@ -151,7 +151,7 @@ const styles = {
         bottom: 0,
         left: 0,
         right: 0,
-        background: "linear-gradient(to top, rgba(30, 64, 175, 0.9), transparent)",
+        background: "linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent)",
         padding: "40px 20px 20px",
         opacity: 0,
         transition: "opacity 0.3s ease",
@@ -198,7 +198,7 @@ const styles = {
         width: "40px",
         height: "40px",
         borderRadius: "50%",
-        backgroundColor: "#f97316",
+        backgroundColor: "#d4af37",
         color: "#ffffff",
         border: "none",
         fontSize: "1.5rem",

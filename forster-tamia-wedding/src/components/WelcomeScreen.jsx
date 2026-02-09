@@ -56,7 +56,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             <path
                                 d="M0,10 Q25,0 50,10 T100,10"
                                 fill="none"
-                                stroke="#f97316"
+                                stroke="#d4af37"
                                 strokeWidth="2"
                             />
                         </svg>
@@ -72,7 +72,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             You're invited to celebrate the union of
                         </p>
                         <h2 style={styles.coupleNames}>Forster & Tamia</h2>
-                        <p style={styles.date}>14 February 2027</p>
+                        <p style={styles.date}>3 April 2026</p>
                     </motion.div>
 
                     <motion.form
@@ -113,7 +113,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             <path
                                 d="M0,10 Q25,20 50,10 T100,10"
                                 fill="none"
-                                stroke="#1e40af"
+                                stroke="#000000"
                                 strokeWidth="2"
                             />
                         </svg>
@@ -166,7 +166,7 @@ const styles = {
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2rem, 5vw, 3rem)",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "10px",
         fontWeight: "700",
     },
@@ -178,7 +178,7 @@ const styles = {
     coupleNames: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-        color: "#f97316",
+        color: "#d4af37",
         marginBottom: "10px",
         fontWeight: "700",
     },
@@ -226,8 +226,8 @@ const styles = {
         bottom: 0,
         opacity: 0.03,
         backgroundImage: `
-            repeating-linear-gradient(45deg, transparent, transparent 10px, #1e40af 10px, #1e40af 11px),
-            repeating-linear-gradient(-45deg, transparent, transparent 10px, #f97316 10px, #f97316 11px)
+            repeating-linear-gradient(45deg, transparent, transparent 10px, #000000 10px, #000000 11px),
+            repeating-linear-gradient(-45deg, transparent, transparent 10px, #d4af37 10px, #d4af37 11px)
         `,
         pointerEvents: "none",
         zIndex: -1,

@@ -116,13 +116,13 @@ export default function Story() {
                         <path
                             d="M0,20 Q50,10 100,20 T200,20"
                             fill="none"
-                            stroke="#1e40af"
+                            stroke="#000000"
                             strokeWidth="2"
                         />
                         <path
                             d="M0,20 Q50,30 100,20 T200,20"
                             fill="none"
-                            stroke="#f97316"
+                            stroke="#d4af37"
                             strokeWidth="2"
                         />
                     </svg>
@@ -149,13 +149,13 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #f97316, transparent)",
+        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "15px",
     },
     subtitle: {
@@ -186,7 +186,7 @@ const styles = {
     },
     yearBadge: {
         display: "inline-block",
-        backgroundColor: "#1e40af",
+        backgroundColor: "#000000",
         color: "#ffffff",
         padding: "8px 20px",
         borderRadius: "20px",
@@ -213,10 +213,10 @@ const styles = {
         transform: "translateX(-50%)",
         width: "16px",
         height: "16px",
-        backgroundColor: "#f97316",
+        backgroundColor: "#d4af37",
         borderRadius: "50%",
         border: "4px solid #ffffff",
-        boxShadow: "0 0 0 4px #f97316",
+        boxShadow: "0 0 0 4px #d4af37",
         zIndex: 1,
     },
     photosSection: {

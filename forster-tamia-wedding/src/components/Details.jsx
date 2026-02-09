@@ -10,19 +10,19 @@ export default function Details() {
             icon: "📅",
             title: "Date",
             info: "3 April 2026",
-            color: "#1e40af",
+            color: "#000000",
         },
         {
             icon: "🕐",
             title: "Time",
             info: "2:00 PM till late",
-            color: "#f97316",
+            color: "#d4af37",
         },
         {
             icon: "📍",
             title: "Venue",
             info: "Lakeside Events next to Mbokodo",
-            color: "#1e40af",
+            color: "#000000",
         },
         {
             icon: "🖤",
@@ -142,13 +142,13 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #1e40af, transparent)",
+        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#1e40af",
+        color: "#000000",
         marginBottom: "15px",
     },
     subtitle: {
@@ -205,7 +205,7 @@ const styles = {
     scheduleTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2rem",
-        color: "#1e40af",
+        color: "#000000",
         textAlign: "center",
         marginBottom: "40px",
     },
@@ -227,14 +227,14 @@ const styles = {
     scheduleTime: {
         fontSize: "1.125rem",
         fontWeight: "700",
-        color: "#f97316",
+        color: "#d4af37",
         minWidth: "100px",
         fontFamily: "'Playfair Display', serif",
     },
     scheduleDivider: {
         width: "3px",
         height: "40px",
-        backgroundColor: "#1e40af",
+        backgroundColor: "#000000",
         borderRadius: "2px",
     },
     scheduleEvent: {
@@ -246,9 +246,9 @@ const styles = {
     locationNote: {
         textAlign: "center",
         padding: "30px",
-        backgroundColor: "rgba(30, 64, 175, 0.05)",
+        backgroundColor: "rgba(0, 0, 0, 0.03)",
         borderRadius: "16px",
-        border: "2px dashed #1e40af",
+        border: "2px dashed #d4af37",
     },
     noteText: {
         fontSize: "1rem",

@@ -203,7 +203,7 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        backgroundColor: "#1e40af",
+        backgroundColor: "#000000",
     },
     collageContainer: {
         position: "absolute",
@@ -234,7 +234,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        background: "linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(30, 64, 175, 0.7) 50%, rgba(249, 115, 22, 0.6) 100%)",
+        background: "linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(26, 26, 26, 0.8) 50%, rgba(212, 175, 55, 0.3) 100%)",
         zIndex: 1,
     },
     content: {
@@ -247,7 +247,7 @@ const styles = {
     decorativeLine: {
         width: "150px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #f97316, transparent)",
+        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
         margin: "0 auto 30px",
     },
     greeting: {
@@ -276,7 +276,7 @@ const styles = {
         textShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
     },
     ampersand: {
-        color: "#f97316",
+        color: "#d4af37",
         fontStyle: "italic",
         margin: "0 15px",
     },
