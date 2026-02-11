@@ -8,6 +8,7 @@ export default function RSVP() {
     const [formData, setFormData] = useState({
         fullName: "",
         phone: "",
+        attendance: "", // "accept" or "decline"
     });
 
     const [errors, setErrors] = useState({});
@@ -17,14 +18,17 @@ export default function RSVP() {
     useEffect(() => {
         // Check if already submitted
         const rsvpStatus = localStorage.getItem("weddingRSVPSubmitted");
-        if (rsvpStatus === "true") {
-            setIsSubmitted(true);
-        }
+        const savedRSVP = localStorage.getItem("weddingRSVP");
 
-        // Pre-fill name from welcome screen
-        const guestName = localStorage.getItem("weddingGuestName");
-        if (guestName) {
-            setFormData(prev => ({ ...prev, fullName: guestName }));
+        if (rsvpStatus === "true" && savedRSVP) {
+            setIsSubmitted(true);
+            setFormData(JSON.parse(savedRSVP));
+        } else {
+            // Pre-fill name from welcome screen if not already submitted
+            const guestName = localStorage.getItem("weddingGuestName");
+            if (guestName) {
+                setFormData(prev => ({ ...prev, fullName: guestName }));
+            }
         }
     }, []);
 
@@ -43,6 +47,10 @@ export default function RSVP() {
             newErrors.phone = "Phone number is invalid";
         }
 
+        if (!formData.attendance) {
+            newErrors.attendance = "Please select your attendance status";
+        }
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -58,7 +66,7 @@ export default function RSVP() {
 
         try {
             // Submit to Google Sheets
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzu96KaPVFhmIACvQyrE2my1NO2DIfELlbPxDih2pGP3QdUKGhIJN-oyQUZUqkRchvv/exec";
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUaMC4vsB7iiIqGGjzVT0KkDm9UZEm83nktT7zMopDDS95vv4VQc3GWkQ0DiINDoux/exec";
 
             console.log("� Submitting RSVP to Google Sheets...");
 
@@ -71,6 +79,7 @@ export default function RSVP() {
                 body: JSON.stringify({
                     fullName: formData.fullName,
                     phone: formData.phone,
+                    attendance: formData.attendance,
                     timestamp: new Date().toISOString(),
                 }),
             });
@@ -106,6 +115,13 @@ export default function RSVP() {
         }
     };
 
+    const handleAttendanceSelect = (value) => {
+        setFormData(prev => ({ ...prev, attendance: value }));
+        if (errors.attendance) {
+            setErrors(prev => ({ ...prev, attendance: "" }));
+        }
+    };
+
     if (isSubmitted) {
         return (
             <section id="rsvp-section" style={styles.section}>
@@ -127,16 +143,21 @@ export default function RSVP() {
 
                         <h2 style={styles.confirmationTitle}>Thank You!</h2>
                         <p style={styles.confirmationText}>
-                            We've received your RSVP and can't wait to celebrate with you on our special day!
+                            {formData.attendance === "accept"
+                                ? "We're thrilled you'll be joining us on our special day!"
+                                : "Thank you for letting us know. We'll miss you!"}
                         </p>
 
                         <div style={styles.confirmationDetails}>
                             <p><strong>Name:</strong> {formData.fullName}</p>
                             <p><strong>Phone:</strong> {formData.phone}</p>
+                            <p><strong>Attendance:</strong> {formData.attendance === "accept" ? "✓ Accepting" : "✕ Declining"}</p>
                         </div>
 
                         <p style={styles.confirmationNote}>
-                            A confirmation has been saved. See you on 3 April 2026! ❤️
+                            {formData.attendance === "accept"
+                                ? "A confirmation has been saved. See you on 3 April 2026! ❤️"
+                                : "Your response has been saved. We hope to celebrate with you another time! ❤️"}
                         </p>
                     </motion.div>
                 </div>
@@ -184,7 +205,7 @@ export default function RSVP() {
                                 ...styles.input,
                                 borderColor: errors.fullName ? "#ef4444" : "#e5e7eb",
                             }}
-                            placeholder="Your full name"
+                            placeholder="e.g. John Doe"
                         />
                         {errors.fullName && <p style={styles.error}>{errors.fullName}</p>}
                     </div>
@@ -207,6 +228,40 @@ export default function RSVP() {
                             placeholder="+263 123 456 789"
                         />
                         {errors.phone && <p style={styles.error}>{errors.phone}</p>}
+                    </div>
+
+                    {/* Attendance Selection */}
+                    <div style={styles.formGroup}>
+                        <label style={styles.label}>
+                            Will you be attending? *
+                        </label>
+                        <div style={styles.attendanceButtons}>
+                            <motion.button
+                                type="button"
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => handleAttendanceSelect("accept")}
+                                style={{
+                                    ...styles.attendanceButton,
+                                    ...(formData.attendance === "accept" ? styles.attendanceButtonActive : {}),
+                                }}
+                            >
+                                ✓ Accept
+                            </motion.button>
+                            <motion.button
+                                type="button"
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => handleAttendanceSelect("decline")}
+                                style={{
+                                    ...styles.attendanceButton,
+                                    ...(formData.attendance === "decline" ? styles.attendanceButtonDecline : {}),
+                                }}
+                            >
+                                ✕ Decline
+                            </motion.button>
+                        </div>
+                        {errors.attendance && <p style={styles.error}>{errors.attendance}</p>}
                     </div>
 
                     {/* Submit Button */}
@@ -322,6 +377,32 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
         gap: "10px",
+    },
+    attendanceButtons: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "15px",
+    },
+    attendanceButton: {
+        padding: "16px 24px",
+        fontSize: "1rem",
+        fontWeight: "600",
+        border: "2px solid #e5e7eb",
+        borderRadius: "12px",
+        backgroundColor: "#ffffff",
+        cursor: "pointer",
+        transition: "all 0.2s ease",
+        fontFamily: "'Inter', sans-serif",
+    },
+    attendanceButtonActive: {
+        backgroundColor: "#d4af37",
+        borderColor: "#d4af37",
+        color: "#000000",
+    },
+    attendanceButtonDecline: {
+        backgroundColor: "#ef4444",
+        borderColor: "#ef4444",
+        color: "#ffffff",
     },
     spinner: {
         width: "16px",

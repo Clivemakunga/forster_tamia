@@ -1,5 +1,7 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import RSVPModal from "./RSVPModal";
+
 
 export default function Hero() {
     const ref = useRef(null);
@@ -7,6 +9,7 @@ export default function Hero() {
     const isInView = useInView(ref, { once: true });
 
     const [guestName, setGuestName] = useState("");
+    const [showRSVPModal, setShowRSVPModal] = useState(false);
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -176,9 +179,26 @@ export default function Hero() {
                         <div style={styles.countdownLabel}>SECONDS</div>
                     </div>
                 </motion.div>
+
+                {/* RSVP Button */}
+                <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1.5, duration: 0.8 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowRSVPModal(true)}
+                    style={styles.rsvpButton}
+                >
+                    RSVP Now
+                </motion.button>
             </motion.div>
 
-
+            {/* RSVP Modal */}
+            <RSVPModal
+                isOpen={showRSVPModal}
+                onClose={() => setShowRSVPModal(false)}
+            />
 
         </section>
     );
@@ -349,6 +369,21 @@ const styles = {
         textTransform: "uppercase",
         letterSpacing: "1.5px",
         fontWeight: "500",
+    },
+    rsvpButton: {
+        backgroundColor: "#d4af37",
+        color: "#000000",
+        border: "none",
+        padding: "18px 50px",
+        fontSize: "1.125rem",
+        fontWeight: "700",
+        borderRadius: "50px",
+        cursor: "pointer",
+        letterSpacing: "1.5px",
+        textTransform: "uppercase",
+        marginTop: "30px",
+        boxShadow: "0 8px 25px rgba(212, 175, 55, 0.4)",
+        transition: "all 0.3s ease",
     },
 };
 

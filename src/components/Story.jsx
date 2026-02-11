@@ -5,29 +5,6 @@ export default function Story() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    const timelineEvents = [
-        {
-            year: "August 2025",
-            title: "First Meeting",
-            description: "Our paths crossed by chance, and a beautiful friendship began.",
-        },
-        {
-            year: "Late 2025",
-            title: "Falling in Love",
-            description: "Friendship blossomed into something deeper and more meaningful.",
-        },
-        {
-            year: "7 February 2026",
-            title: "Lobola",
-            description: "A magical moment when forever became a promise.",
-        },
-        {
-            year: "3 April 2026",
-            title: "Our Wedding Day",
-            description: "The beginning of our lifelong journey together.",
-        },
-    ];
-
     return (
         <section id="story-section" ref={ref} style={styles.section}>
             <div style={styles.container}>
@@ -39,79 +16,54 @@ export default function Story() {
                     style={styles.header}
                 >
                     <div style={styles.decorativeLine} />
-                    <h2 style={styles.title}>Our Story</h2>
+                    <h2 style={styles.title}>Our Foundation</h2>
                     <p style={styles.subtitle}>
-                        A journey of love, friendship, and commitment
+                        Words that inspire our journey together
                     </p>
                 </motion.div>
 
-                {/* Timeline */}
-                <div style={styles.timeline}>
-                    {timelineEvents.map((event, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: index * 0.2, duration: 0.6 }}
-                            style={{
-                                ...styles.timelineItem,
-                                alignSelf: index % 2 === 0 ? "flex-start" : "flex-end",
-                            }}
-                        >
-                            <div style={styles.timelineCard}>
-                                <div style={styles.yearBadge}>{event.year}</div>
-                                <h3 style={styles.eventTitle}>{event.title}</h3>
-                                <p style={styles.eventDescription}>{event.description}</p>
-                            </div>
-
-                            {/* Timeline Dot */}
-                            <div style={styles.timelineDot} />
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Couple Photos */}
+                {/* Scripture Card */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    style={styles.photosSection}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    style={styles.scriptureCard}
                 >
-                    <div style={styles.photoGrid}>
-                        <motion.div
-                            whileHover={{ scale: 1.05, rotate: -2 }}
-                            transition={{ duration: 0.3 }}
-                            style={styles.photoCard}
-                        >
-                            <img
-                                src="/images/couple-1.jpg"
-                                alt="Forster & Tamia"
-                                style={styles.photo}
-                            />
-                            <div style={styles.photoOverlay}>
-                                <p style={styles.photoCaption}>Traditional Elegance</p>
-                            </div>
-                        </motion.div>
+                    <div style={styles.scriptureReference}>Ruth 1:16</div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.05, rotate: 2 }}
-                            transition={{ duration: 0.3 }}
-                            style={styles.photoCard}
-                        >
-                            <img
-                                src="/images/couple-2.jpg"
-                                alt="Forster & Tamia"
-                                style={styles.photo}
-                            />
-                            <div style={styles.photoOverlay}>
-                                <p style={styles.photoCaption}>Love & Joy</p>
-                            </div>
-                        </motion.div>
+                    <div style={styles.scriptureText}>
+                        <p style={styles.scriptureLine}>
+                            "Entreat me not to leave you,
+                        </p>
+                        <p style={styles.scriptureLine}>
+                            Or to turn back from following after you;
+                        </p>
+                        <p style={styles.scriptureLine}>
+                            For wherever you go, I will go;
+                        </p>
+                        <p style={styles.scriptureLine}>
+                            And wherever you lodge, I will lodge;
+                        </p>
+                        <p style={styles.scriptureLine}>
+                            Your people shall be my people,
+                        </p>
+                        <p style={styles.scriptureLine}>
+                            And your God, my God."
+                        </p>
+                    </div>
+
+                    <div style={styles.scriptureFootnote}>
+                        A promise of unwavering commitment and love
                     </div>
                 </motion.div>
 
                 {/* Cultural Pattern Divider */}
-                <div style={styles.patternDivider}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 0.6 } : {}}
+                    transition={{ delay: 0.6, duration: 0.6 }}
+                    style={styles.patternDivider}
+                >
                     <svg width="200" height="40" viewBox="0 0 200 40">
                         <path
                             d="M0,20 Q50,10 100,20 T200,20"
@@ -126,7 +78,7 @@ export default function Story() {
                             strokeWidth="2"
                         />
                     </svg>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
@@ -163,108 +115,50 @@ const styles = {
         color: "#6b7280",
         fontStyle: "italic",
     },
-    timeline: {
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        gap: "40px",
-        marginBottom: "80px",
-        padding: "0 20px",
-    },
-    timelineItem: {
-        position: "relative",
-        width: "100%",
-        maxWidth: "500px",
-    },
-    timelineCard: {
+    scriptureCard: {
         backgroundColor: "#faf8f3",
-        padding: "30px",
-        borderRadius: "16px",
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.08)",
-        border: "2px solid #f5f5dc",
-        position: "relative",
-    },
-    yearBadge: {
-        display: "inline-block",
-        backgroundColor: "#000000",
-        color: "#ffffff",
-        padding: "8px 20px",
-        borderRadius: "20px",
-        fontSize: "0.875rem",
-        fontWeight: "700",
-        marginBottom: "15px",
-        letterSpacing: "1px",
-    },
-    eventTitle: {
-        fontFamily: "'Playfair Display', serif",
-        fontSize: "1.75rem",
-        color: "#1f2937",
-        marginBottom: "10px",
-    },
-    eventDescription: {
-        fontSize: "1rem",
-        color: "#6b7280",
-        lineHeight: "1.6",
-    },
-    timelineDot: {
-        position: "absolute",
-        top: "30px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "16px",
-        height: "16px",
-        backgroundColor: "#d4af37",
-        borderRadius: "50%",
-        border: "4px solid #ffffff",
-        boxShadow: "0 0 0 4px #d4af37",
-        zIndex: 1,
-    },
-    photosSection: {
-        marginTop: "60px",
-    },
-    photoGrid: {
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "30px",
-        maxWidth: "900px",
+        padding: "60px 40px",
+        borderRadius: "24px",
+        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+        border: "3px solid #d4af37",
+        maxWidth: "800px",
         margin: "0 auto",
     },
-    photoCard: {
-        position: "relative",
-        borderRadius: "20px",
-        overflow: "hidden",
-        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
-        cursor: "pointer",
-    },
-    photo: {
-        width: "100%",
-        height: "400px",
-        objectFit: "cover",
-        display: "block",
-    },
-    photoOverlay: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: "linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)",
-        padding: "30px 20px 20px",
-        opacity: 0,
-        transition: "opacity 0.3s ease",
-    },
-    photoCaption: {
-        color: "#ffffff",
-        fontSize: "1.25rem",
-        fontWeight: "600",
+    scriptureReference: {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "1.5rem",
+        color: "#d4af37",
+        fontWeight: "700",
         textAlign: "center",
+        marginBottom: "30px",
+        letterSpacing: "1px",
+    },
+    scriptureText: {
+        marginBottom: "30px",
+    },
+    scriptureLine: {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "clamp(1.125rem, 2.5vw, 1.375rem)",
+        color: "#1f2937",
+        lineHeight: "1.8",
+        marginBottom: "12px",
+        fontStyle: "italic",
+        textAlign: "center",
+    },
+    scriptureFootnote: {
+        fontSize: "1rem",
+        color: "#6b7280",
+        textAlign: "center",
+        fontStyle: "italic",
+        paddingTop: "20px",
+        borderTop: "2px solid #e5e7eb",
     },
     patternDivider: {
         display: "flex",
         justifyContent: "center",
         marginTop: "60px",
-        opacity: 0.6,
     },
-    };
+};
 
 // Add hover effect for photo overlay via CSS-in-JS workaround
 if (typeof document !== "undefined") {
