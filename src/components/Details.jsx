@@ -120,6 +120,19 @@ export default function Details() {
                         Lakeside Events is located next to Mbokodo. Ample parking available on-site.
                     </p>
                 </motion.div>
+
+                {/* Important Note */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1.4, duration: 0.6 }}
+                    style={styles.importantNote}
+                >
+                    <p style={styles.importantTitle}>⚠️ Important Notice</p>
+                    <p style={styles.importantText}>
+                        No children allowed • Strictly by invitation • No plus one
+                    </p>
+                </motion.div>
             </div>
         </section>
     );
@@ -257,5 +270,31 @@ const styles = {
         maxWidth: "800px",
         margin: "0 auto",
     },
-    };
+    locationTitle: {
+        fontSize: "1.25rem",
+        color: "#000000",
+        fontWeight: "700",
+        marginBottom: "10px",
+    },
+    importantNote: {
+        textAlign: "center",
+        padding: "30px",
+        backgroundColor: "#fef3c7",
+        borderRadius: "16px",
+        border: "2px solid #d4af37",
+        marginTop: "20px",
+    },
+    importantTitle: {
+        fontSize: "1.25rem",
+        color: "#000000",
+        fontWeight: "700",
+        marginBottom: "10px",
+    },
+    importantText: {
+        fontSize: "1rem",
+        color: "#1f2937",
+        fontWeight: "600",
+        lineHeight: "1.6",
+    },
+};
 
