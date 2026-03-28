@@ -1,16 +1,13 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 export default function RSVP() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-<<<<<<< HEAD
-=======
     const [formData, setFormData] = useState({
         fullName: "",
         phone: "",
-        attendance: "", // "accept" or "decline"
     });
 
     const [errors, setErrors] = useState({});
@@ -20,17 +17,14 @@ export default function RSVP() {
     useEffect(() => {
         // Check if already submitted
         const rsvpStatus = localStorage.getItem("weddingRSVPSubmitted");
-        const savedRSVP = localStorage.getItem("weddingRSVP");
-
-        if (rsvpStatus === "true" && savedRSVP) {
+        if (rsvpStatus === "true") {
             setIsSubmitted(true);
-            setFormData(JSON.parse(savedRSVP));
-        } else {
-            // Pre-fill name from welcome screen if not already submitted
-            const guestName = localStorage.getItem("weddingGuestName");
-            if (guestName) {
-                setFormData(prev => ({ ...prev, fullName: guestName }));
-            }
+        }
+
+        // Pre-fill name from welcome screen
+        const guestName = localStorage.getItem("weddingGuestName");
+        if (guestName) {
+            setFormData(prev => ({ ...prev, fullName: guestName }));
         }
     }, []);
 
@@ -49,10 +43,6 @@ export default function RSVP() {
             newErrors.phone = "Phone number is invalid";
         }
 
-        if (!formData.attendance) {
-            newErrors.attendance = "Please select your attendance status";
-        }
-
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -68,7 +58,7 @@ export default function RSVP() {
 
         try {
             // Submit to Google Sheets
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUaMC4vsB7iiIqGGjzVT0KkDm9UZEm83nktT7zMopDDS95vv4VQc3GWkQ0DiINDoux/exec";
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzu96KaPVFhmIACvQyrE2my1NO2DIfELlbPxDih2pGP3QdUKGhIJN-oyQUZUqkRchvv/exec";
 
             console.log("� Submitting RSVP to Google Sheets...");
 
@@ -81,7 +71,6 @@ export default function RSVP() {
                 body: JSON.stringify({
                     fullName: formData.fullName,
                     phone: formData.phone,
-                    attendance: formData.attendance,
                     timestamp: new Date().toISOString(),
                 }),
             });
@@ -117,13 +106,6 @@ export default function RSVP() {
         }
     };
 
-    const handleAttendanceSelect = (value) => {
-        setFormData(prev => ({ ...prev, attendance: value }));
-        if (errors.attendance) {
-            setErrors(prev => ({ ...prev, attendance: "" }));
-        }
-    };
-
     if (isSubmitted) {
         return (
             <section id="rsvp-section" style={styles.section}>
@@ -145,21 +127,16 @@ export default function RSVP() {
 
                         <h2 style={styles.confirmationTitle}>Thank You!</h2>
                         <p style={styles.confirmationText}>
-                            {formData.attendance === "accept"
-                                ? "We're thrilled you'll be joining us on our special day!"
-                                : "Thank you for letting us know. We'll miss you!"}
+                            We've received your RSVP and can't wait to celebrate with you on our special day!
                         </p>
 
                         <div style={styles.confirmationDetails}>
                             <p><strong>Name:</strong> {formData.fullName}</p>
                             <p><strong>Phone:</strong> {formData.phone}</p>
-                            <p><strong>Attendance:</strong> {formData.attendance === "accept" ? "✓ Accepting" : "✕ Declining"}</p>
                         </div>
 
                         <p style={styles.confirmationNote}>
-                            {formData.attendance === "accept"
-                                ? "A confirmation has been saved. See you on 3 April 2026! ❤️"
-                                : "Your response has been saved. We hope to celebrate with you another time! ❤️"}
+                            A confirmation has been saved. See you on 3 April 2026! ❤️
                         </p>
                     </motion.div>
                 </div>
@@ -167,10 +144,10 @@ export default function RSVP() {
         );
     }
 
->>>>>>> 8dba19e0a31b4967782154093bd1582eff42475a
     return (
         <section id="rsvp-section" ref={ref} style={styles.section}>
             <div style={styles.container}>
+                {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -179,23 +156,19 @@ export default function RSVP() {
                 >
                     <div style={styles.decorativeLine} />
                     <h2 style={styles.title}>RSVP</h2>
+                    <p style={styles.subtitle}>
+                        Please confirm your attendance
+                    </p>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                {/* RSVP Form */}
+                <motion.form
+                    onSubmit={handleSubmit}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    style={styles.closedCard}
+                    style={styles.form}
                 >
-<<<<<<< HEAD
-                    <div style={styles.icon}>💌</div>
-                    <h3 style={styles.closedTitle}>RSVP is Now Closed</h3>
-                    <p style={styles.closedText}>
-                        The RSVP period has ended. We look forward to celebrating with you!
-                    </p>
-                    <p style={styles.closedNote}>3 April 2026 ❤️</p>
-                </motion.div>
-=======
                     {/* Full Name */}
                     <div style={styles.formGroup}>
                         <label htmlFor="fullName" style={styles.label}>
@@ -211,7 +184,7 @@ export default function RSVP() {
                                 ...styles.input,
                                 borderColor: errors.fullName ? "#ef4444" : "#e5e7eb",
                             }}
-                            placeholder="e.g. John Doe"
+                            placeholder="Your full name"
                         />
                         {errors.fullName && <p style={styles.error}>{errors.fullName}</p>}
                     </div>
@@ -236,40 +209,6 @@ export default function RSVP() {
                         {errors.phone && <p style={styles.error}>{errors.phone}</p>}
                     </div>
 
-                    {/* Attendance Selection */}
-                    <div style={styles.formGroup}>
-                        <label style={styles.label}>
-                            Will you be attending? *
-                        </label>
-                        <div style={styles.attendanceButtons}>
-                            <motion.button
-                                type="button"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={() => handleAttendanceSelect("accept")}
-                                style={{
-                                    ...styles.attendanceButton,
-                                    ...(formData.attendance === "accept" ? styles.attendanceButtonActive : {}),
-                                }}
-                            >
-                                ✓ Accept
-                            </motion.button>
-                            <motion.button
-                                type="button"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={() => handleAttendanceSelect("decline")}
-                                style={{
-                                    ...styles.attendanceButton,
-                                    ...(formData.attendance === "decline" ? styles.attendanceButtonDecline : {}),
-                                }}
-                            >
-                                ✕ Decline
-                            </motion.button>
-                        </div>
-                        {errors.attendance && <p style={styles.error}>{errors.attendance}</p>}
-                    </div>
-
                     {/* Submit Button */}
                     <motion.button
                         type="submit"
@@ -292,7 +231,6 @@ export default function RSVP() {
                         )}
                     </motion.button>
                 </motion.form>
->>>>>>> 8dba19e0a31b4967782154093bd1582eff42475a
             </div>
         </section>
     );
@@ -305,12 +243,12 @@ const styles = {
         position: "relative",
     },
     container: {
-        maxWidth: "600px",
+        maxWidth: "800px",
         margin: "0 auto",
     },
     header: {
         textAlign: "center",
-        marginBottom: "50px",
+        marginBottom: "60px",
     },
     decorativeLine: {
         width: "100px",
@@ -322,11 +260,8 @@ const styles = {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
         color: "#000000",
-        marginBottom: "0",
+        marginBottom: "15px",
     },
-<<<<<<< HEAD
-    closedCard: {
-=======
     subtitle: {
         fontSize: "1.125rem",
         color: "#6b7280",
@@ -388,32 +323,6 @@ const styles = {
         justifyContent: "center",
         gap: "10px",
     },
-    attendanceButtons: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "15px",
-    },
-    attendanceButton: {
-        padding: "16px 24px",
-        fontSize: "1rem",
-        fontWeight: "600",
-        border: "2px solid #e5e7eb",
-        borderRadius: "12px",
-        backgroundColor: "#ffffff",
-        cursor: "pointer",
-        transition: "all 0.2s ease",
-        fontFamily: "'Inter', sans-serif",
-    },
-    attendanceButtonActive: {
-        backgroundColor: "#d4af37",
-        borderColor: "#d4af37",
-        color: "#000000",
-    },
-    attendanceButtonDecline: {
-        backgroundColor: "#ef4444",
-        borderColor: "#ef4444",
-        color: "#ffffff",
-    },
     spinner: {
         width: "16px",
         height: "16px",
@@ -424,33 +333,59 @@ const styles = {
         display: "inline-block",
     },
     confirmationCard: {
->>>>>>> 8dba19e0a31b4967782154093bd1582eff42475a
         backgroundColor: "#ffffff",
         padding: "60px 40px",
         borderRadius: "24px",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
         textAlign: "center",
     },
-    icon: {
-        fontSize: "3.5rem",
+    checkmark: {
+        width: "80px",
+        height: "80px",
+        borderRadius: "50%",
+        backgroundColor: "#22c55e",
+        color: "#ffffff",
+        fontSize: "3rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "0 auto 30px",
+        boxShadow: "0 4px 20px rgba(34, 197, 94, 0.3)",
+    },
+    confirmationTitle: {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "2.5rem",
+        color: "#000000",
         marginBottom: "20px",
     },
-    closedTitle: {
-        fontFamily: "'Playfair Display', serif",
-        fontSize: "1.8rem",
-        color: "#1f2937",
-        marginBottom: "16px",
-    },
-    closedText: {
-        fontSize: "1.1rem",
+    confirmationText: {
+        fontSize: "1.125rem",
         color: "#6b7280",
+        marginBottom: "30px",
         lineHeight: "1.6",
-        marginBottom: "24px",
     },
-    closedNote: {
+    confirmationDetails: {
+        backgroundColor: "#faf8f3",
+        padding: "25px",
+        borderRadius: "12px",
+        marginBottom: "25px",
+        textAlign: "left",
+    },
+    confirmationNote: {
         fontSize: "1rem",
         color: "#d4af37",
         fontWeight: "600",
     },
 };
+
+// Add spinner animation
+if (typeof document !== "undefined") {
+    const style = document.createElement("style");
+    style.textContent = `
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+}
 
