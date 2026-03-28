@@ -4,7 +4,6 @@ import Hero from "./Hero";
 import Story from "./Story";
 import Details from "./Details";
 import Gallery from "./Gallery";
-import RSVP from "./RSVP";
 
 export default function SectionNavigator() {
     const [currentSection, setCurrentSection] = useState(0);
@@ -14,8 +13,7 @@ export default function SectionNavigator() {
         { id: 0, name: "HERO", component: Hero, nextButton: "See Our Story" },
         { id: 1, name: "STORY", component: Story, nextButton: "View Details" },
         { id: 2, name: "DETAILS", component: Details, nextButton: "View Gallery" },
-        { id: 3, name: "GALLERY", component: Gallery, nextButton: "RSVP Now" },
-        { id: 4, name: "RSVP", component: RSVP, nextButton: null },
+        { id: 3, name: "GALLERY", component: Gallery, nextButton: null },
     ];
 
     const unlockNextSection = () => {
