@@ -27,7 +27,7 @@ export default function Hero() {
 
     useEffect(() => {
         const calculateTimeLeft = () => {
-            const weddingDate = new Date("2026-04-03T14:00:00");
+            const weddingDate = new Date("2026-12-22T09:30:00");
             const now = new Date();
             const difference = weddingDate - now;
 
@@ -119,7 +119,7 @@ export default function Hero() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     style={styles.subtitle}
                 >
-                    WE ARE GETTING MARRIED
+                    THE WEDDING CEREMONY
                 </motion.p>
 
                 {/* Names */}
@@ -129,17 +129,27 @@ export default function Hero() {
                     transition={{ delay: 0.7, duration: 1 }}
                     style={styles.title}
                 >
-                    Forster <span style={styles.ampersand}>&</span> Tamia
+                    Prudence <span style={styles.ampersand}>&</span> Sisa
                 </motion.h1>
 
-                {/* Date */}
+                {/* Date & Time */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.9, duration: 0.8 }}
                     style={styles.date}
                 >
-                    3 April 2026
+                    22 December 2026 • 09:30 AM
+                </motion.p>
+
+                {/* Quote */}
+                <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1.0, duration: 0.8 }}
+                    style={styles.quote}
+                >
+                    ✨ “Two hearts, one journey, one beautiful beginning.” ✨
                 </motion.p>
 
                 {/* Decorative Line */}
@@ -272,9 +282,17 @@ const styles = {
     date: {
         fontSize: "1.5rem",
         color: "#faf8f3",
-        marginBottom: "50px",
+        marginBottom: "20px",
         fontWeight: "500",
         letterSpacing: "1px",
+    },
+    quote: {
+        fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
+        color: "#d4af37",
+        fontStyle: "italic",
+        fontFamily: "'Playfair Display', serif",
+        marginBottom: "30px",
+        letterSpacing: "0.5px",
     },
     countdown: {
         display: "flex",

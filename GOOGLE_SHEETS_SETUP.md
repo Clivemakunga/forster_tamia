@@ -18,41 +18,85 @@
 
 ```javascript
 function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  
   try {
-    // Get the active spreadsheet
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
-    // Parse the incoming data
-    const data = JSON.parse(e.postData.contents);
+    var fullName = "";
+    var phone = "";
+    var timestamp = new Date().toLocaleString("en-GB", { timeZone: "Africa/Harare" });
     
-    // Append the data to the sheet
-    sheet.appendRow([
-      data.fullName,
-      data.phone,
-      data.timestamp
-    ]);
+    // 1. Try parsing JSON from request body
+    if (e && e.postData && e.postData.contents) {
+      try {
+        var data = JSON.parse(e.postData.contents);
+        fullName = data.fullName || "";
+        phone = data.phone || "";
+        if (data.timestamp) timestamp = data.timestamp;
+      } catch (err) {}
+    }
     
-    // Return success response with CORS headers
+    // 2. Fallback to URL/Form parameters
+    if (!fullName && e && e.parameter) {
+      fullName = e.parameter.fullName || "";
+      phone = e.parameter.phone || "";
+      if (e.parameter.timestamp) timestamp = e.parameter.timestamp;
+    }
+    
+    if (!fullName) {
+      return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "No data" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Match column headers dynamically (Timestamp, Full Name, Phone)
+    var headers = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 3)).getValues()[0];
+    var row = [];
+    
+    for (var i = 0; i < headers.length; i++) {
+      var header = String(headers[i]).toLowerCase().trim();
+      if (header.indexOf("time") !== -1 || header.indexOf("date") !== -1) {
+        row.push(timestamp);
+      } else if (header.indexOf("name") !== -1) {
+        row.push(fullName);
+      } else if (header.indexOf("phone") !== -1 || header.indexOf("contact") !== -1 || header.indexOf("number") !== -1) {
+        row.push("'" + phone); // apostrophe preserves leading zero in phone numbers
+      } else {
+        row.push("");
+      }
+    }
+
+    // If headers were found, append matching row, else default to [Timestamp, Full Name, Phone]
+    if (row.length > 0) {
+      sheet.appendRow(row);
+    } else {
+      sheet.appendRow([timestamp, fullName, "'" + phone]);
+    }
+    
     return ContentService.createTextOutput(JSON.stringify({
-      status: 'success',
-      message: 'RSVP submitted successfully'
+      status: "success",
+      message: "RSVP submitted successfully",
+      fullName: fullName
     }))
     .setMimeType(ContentService.MimeType.JSON);
     
   } catch (error) {
-    // Return error response
     return ContentService.createTextOutput(JSON.stringify({
-      status: 'error',
+      status: "error",
       message: error.toString()
     }))
     .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
   }
 }
 
 function doGet(e) {
   return ContentService.createTextOutput(JSON.stringify({
     status: 'success',
-    message: 'Wedding RSVP API is running'
+    message: 'Wedding RSVP API is running',
+    time: new Date().toISOString()
   }))
   .setMimeType(ContentService.MimeType.JSON);
 }
@@ -79,8 +123,7 @@ function doGet(e) {
    - Click "Allow"
 7. **Copy the Web App URL** (it will look like: `https://script.google.com/macros/s/AKfycby...`)
 8. Click **Done**
-AKfycby12UxAP2gO_A1YxRiVMlzbvqt5vLI4SwOGIl3ER6tHDWw5i-j6xNmZmvJPuqe5dZCW
-https://script.google.com/macros/s/AKfycby12UxAP2gO_A1YxRiVMlzbvqt5vLI4SwOGIl3ER6tHDWw5i-j6xNmZmvJPuqe5dZCW/exec
+https://script.google.com/macros/s/AKfycbyUaMC4vsB7iiIqGGjzVT0KkDm9UZEm83nktT7zMopDDS95vv4VQc3GWkQ0DiINDoux/exec
 ## Step 4: Update Your Website
 
 1. Open `src/components/RSVP.jsx`

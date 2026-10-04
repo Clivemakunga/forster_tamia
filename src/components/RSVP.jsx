@@ -58,25 +58,34 @@ export default function RSVP() {
 
         try {
             // Submit to Google Sheets
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzu96KaPVFhmIACvQyrE2my1NO2DIfELlbPxDih2pGP3QdUKGhIJN-oyQUZUqkRchvv/exec";
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUaMC4vsB7iiIqGGjzVT0KkDm9UZEm83nktT7zMopDDS95vv4VQc3GWkQ0DiINDoux/exec";
 
-            console.log("� Submitting RSVP to Google Sheets...");
+            console.log("📝 Submitting RSVP to Google Sheets...");
 
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
+            const timestamp = new Date().toISOString();
+            const params = new URLSearchParams({
+                fullName: formData.fullName,
+                phone: formData.phone,
+                timestamp: timestamp,
+            });
+
+            // Send via POST with URLSearchParams in URL and JSON in body using text/plain
+            // This is CORS-safelisted, avoids preflight OPTIONS failure, and ensures
+            // Google Apps Script captures the data via either e.parameter or e.postData.contents
+            await fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
                 method: "POST",
-                mode: "no-cors", // Required for Google Apps Script
+                mode: "no-cors",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "text/plain;charset=utf-8",
                 },
                 body: JSON.stringify({
                     fullName: formData.fullName,
                     phone: formData.phone,
-                    timestamp: new Date().toISOString(),
+                    timestamp: timestamp,
                 }),
             });
 
-            console.log("✅ RSVP submitted successfully to Google Sheets!");
-            console.log("Response status:", response.status);
+            console.log("✅ RSVP request dispatched to Google Sheets!");
 
             // Save to localStorage
             localStorage.setItem("weddingRSVP", JSON.stringify(formData));
@@ -136,8 +145,21 @@ export default function RSVP() {
                         </div>
 
                         <p style={styles.confirmationNote}>
-                            A confirmation has been saved. See you on 3 April 2026! ❤️
+                            A confirmation has been saved. See you on 22 December 2026! ❤️
                         </p>
+
+                        {/* 
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setIsSubmitted(false);
+                                localStorage.removeItem("weddingRSVPSubmitted");
+                            }}
+                            style={styles.editResponseButton}
+                        >
+                            Submit Another Response
+                        </button> 
+                        */}
                     </motion.div>
                 </div>
             </section>
@@ -157,8 +179,31 @@ export default function RSVP() {
                     <div style={styles.decorativeLine} />
                     <h2 style={styles.title}>RSVP</h2>
                     <p style={styles.subtitle}>
-                        Please confirm your attendance
+                        Kindly confirm your attendance by 01/12/2026
                     </p>
+                </motion.div>
+
+                {/* Direct Contacts */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    style={styles.contactsGrid}
+                >
+                    <a href="tel:0773445842" style={styles.contactCard}>
+                        <span style={styles.contactIcon}>📞</span>
+                        <div style={styles.contactInfo}>
+                            <span style={styles.contactName}>Sisa</span>
+                            <span style={styles.contactNumber}>0773445842</span>
+                        </div>
+                    </a>
+                    <a href="tel:0772682234" style={styles.contactCard}>
+                        <span style={styles.contactIcon}>📞</span>
+                        <div style={styles.contactInfo}>
+                            <span style={styles.contactName}>Prudence</span>
+                            <span style={styles.contactNumber}>0772682234</span>
+                        </div>
+                    </a>
                 </motion.div>
 
                 {/* RSVP Form */}
@@ -231,6 +276,25 @@ export default function RSVP() {
                         )}
                     </motion.button>
                 </motion.form>
+
+                {/* Quote & Notice Footer */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                    style={styles.quoteCard}
+                >
+                    <p style={styles.quoteText}>
+                        ✨ “Two hearts, one journey, one beautiful beginning.” ✨
+                    </p>
+                    <p style={styles.presenceText}>
+                        Your presence will make our celebration complete.
+                    </p>
+                    <div style={styles.noticeContainer}>
+                        <span style={styles.noticeTag}>#STRICTLY BY INVITE</span>
+                        <span style={styles.noticeTag}>#NO CHILDREN AND NO PLUS ONE</span>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );
@@ -375,6 +439,95 @@ const styles = {
         fontSize: "1rem",
         color: "#d4af37",
         fontWeight: "600",
+    },
+    contactsGrid: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: "20px",
+        marginBottom: "35px",
+    },
+    contactCard: {
+        display: "flex",
+        alignItems: "center",
+        gap: "16px",
+        padding: "18px 24px",
+        backgroundColor: "#ffffff",
+        borderRadius: "16px",
+        border: "2px solid #d4af37",
+        boxShadow: "0 4px 15px rgba(212, 175, 55, 0.15)",
+        textDecoration: "none",
+        color: "#1f2937",
+    },
+    contactIcon: {
+        fontSize: "1.75rem",
+    },
+    contactInfo: {
+        display: "flex",
+        flexDirection: "column",
+    },
+    contactName: {
+        fontSize: "0.85rem",
+        color: "#6b7280",
+        fontWeight: "600",
+        textTransform: "uppercase",
+        letterSpacing: "0.5px",
+    },
+    contactNumber: {
+        fontSize: "1.25rem",
+        fontWeight: "700",
+        color: "#000000",
+        fontFamily: "'Playfair Display', serif",
+    },
+    quoteCard: {
+        marginTop: "40px",
+        textAlign: "center",
+        padding: "35px 25px",
+        backgroundColor: "#ffffff",
+        borderRadius: "20px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)",
+        border: "1px solid rgba(212, 175, 55, 0.3)",
+    },
+    quoteText: {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "clamp(1.1rem, 2.5vw, 1.35rem)",
+        color: "#d4af37",
+        fontStyle: "italic",
+        fontWeight: "600",
+        marginBottom: "12px",
+    },
+    presenceText: {
+        fontSize: "1.05rem",
+        color: "#1f2937",
+        fontWeight: "500",
+        marginBottom: "20px",
+    },
+    noticeContainer: {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px",
+        justifyContent: "center",
+    },
+    noticeTag: {
+        backgroundColor: "#fef3c7",
+        color: "#92400e",
+        padding: "8px 16px",
+        borderRadius: "20px",
+        fontSize: "0.85rem",
+        fontWeight: "700",
+        letterSpacing: "0.5px",
+        border: "1px solid #fde68a",
+    },
+    editResponseButton: {
+        marginTop: "20px",
+        backgroundColor: "transparent",
+        border: "1px solid #d4af37",
+        color: "#d4af37",
+        borderRadius: "20px",
+        padding: "8px 20px",
+        fontSize: "0.85rem",
+        fontWeight: "600",
+        cursor: "pointer",
+        transition: "all 0.2s ease",
     },
 };
 

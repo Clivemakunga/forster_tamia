@@ -7,10 +7,8 @@ export default function Gallery() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const images = [
-        { src: "/images/couple-1.jpg", alt: "Forster & Tamia - Traditional Attire", caption: "Traditional Elegance" },
-        { src: "/images/couple-2.jpg", alt: "Forster & Tamia - Together", caption: "Love & Joy" },
-        { src: "/images/couple-1.jpg", alt: "Forster & Tamia - Celebration", caption: "Cultural Beauty" },
-        { src: "/images/couple-2.jpg", alt: "Forster & Tamia - Happiness", caption: "Forever Together" },
+        { src: "/images/couple-1.jpg", alt: "Prudence & Sisa - Shades of Blue", caption: "Love & Joy" },
+        { src: "/images/couple-2.jpg", alt: "Prudence & Sisa - Beautiful Moments", caption: "Forever Together" },
     ];
 
     return (
@@ -129,20 +127,23 @@ const styles = {
     },
     gallery: {
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-        gap: "25px",
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        gap: "30px",
+        maxWidth: "900px",
+        margin: "0 auto",
     },
     imageCard: {
         position: "relative",
-        borderRadius: "16px",
+        borderRadius: "20px",
         overflow: "hidden",
         cursor: "pointer",
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12)",
         transition: "all 0.3s ease",
+        border: "2px solid rgba(212, 175, 55, 0.3)",
     },
     image: {
         width: "100%",
-        height: "350px",
+        height: "460px",
         objectFit: "cover",
         display: "block",
     },

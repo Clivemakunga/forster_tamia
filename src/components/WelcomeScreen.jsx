@@ -68,11 +68,11 @@ export default function WelcomeScreen({ onNameSubmit }) {
                         transition={{ delay: 0.4, duration: 0.6 }}
                     >
                         <h1 style={styles.title}>Welcome</h1>
+                        <h2 style={styles.coupleNames}>Prudence & Sisa</h2>
                         <p style={styles.subtitle}>
-                            You're invited to celebrate the union of
+                            joyfully invite you to celebrate with them as they exchange their vows and begin their journey together as husband and wife.
                         </p>
-                        <h2 style={styles.coupleNames}>Forster & Tamia</h2>
-                        <p style={styles.date}>3 April 2026</p>
+                        <p style={styles.date}>22 December 2026</p>
                     </motion.div>
 
                     <motion.form
@@ -171,8 +171,10 @@ const styles = {
         fontWeight: "700",
     },
     subtitle: {
-        fontSize: "1rem",
+        fontSize: "0.95rem",
         color: "#6b7280",
+        lineHeight: "1.5",
+        fontStyle: "italic",
         marginBottom: "20px",
     },
     coupleNames: {

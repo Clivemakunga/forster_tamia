@@ -20,7 +20,7 @@ export default function RootApp() {
                 {/* Footer */}
                 <footer style={styles.footer}>
                     <p style={styles.footerText}>
-                        Forster & Tamia • 3 April 2026
+                        Prudence & Sisa • 22 December 2026
                     </p>
                     <p style={styles.footerSubtext}>
                         Made with ❤️ for our special day

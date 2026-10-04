@@ -169,7 +169,7 @@ export default function RSVPModal({ isOpen, onClose }) {
 
                                 <p style={styles.confirmationNote}>
                                     {formData.attendance === "accept"
-                                        ? "A confirmation has been saved. See you on 3 April 2026! ❤️"
+                                        ? "A confirmation has been saved. See you on 22 December 2026! ❤️"
                                         : "Your response has been saved. We hope to celebrate with you another time! ❤️"}
                                 </p>
                             </div>

@@ -9,36 +9,36 @@ export default function Details() {
         {
             icon: "📅",
             title: "Date",
-            info: "3 April 2026",
+            info: "22 December 2026",
             color: "#000000",
         },
         {
             icon: "🕐",
             title: "Time",
-            info: "2:00 PM till late",
+            info: "09:30 AM",
             color: "#d4af37",
         },
         {
             icon: "📍",
             title: "Venue",
-            info: "Lakeside Events next to Mbokodo",
+            info: "JOYOUS KINGDOM EVENTS",
             color: "#000000",
         },
         {
-            icon: "🖤",
+            icon: "💙",
             title: "Dress Code",
-            info: "Strictly All Black",
-            color: "#000000",
+            info: "SHADES OF BLUE",
+            color: "#1e40af",
         },
     ];
 
     const schedule = [
-        { time: "2:00 PM", event: "Guest Arrival & Reception" },
-        { time: "3:00 PM", event: "Ceremony Begins" },
-        { time: "4:30 PM", event: "Cocktail Hour" },
-        { time: "6:00 PM", event: "Dinner & Celebration" },
-        { time: "8:00 PM", event: "First Dance" },
-        { time: "9:00 PM", event: "Party till late" },
+        { time: "09:00 AM", event: "Guest Arrival" },
+        { time: "09:30 AM", event: "Wedding Ceremony Begins" },
+        { time: "11:30 AM", event: "Photo Session & Refreshments" },
+        { time: "01:00 PM", event: "Wedding Reception & Lunch" },
+        { time: "03:30 PM", event: "Cake Cutting & First Dance" },
+        { time: "05:00 PM", event: "Celebration & Music" },
     ];
 
     return (
@@ -116,8 +116,9 @@ export default function Details() {
                     style={styles.locationNote}
                 >
                     <p style={styles.locationTitle}>📍 Venue Location</p>
+                    <p style={styles.locationVenue}>JOYOUS KINGDOM EVENTS</p>
                     <p style={styles.locationText}>
-                        Lakeside Events is located next to Mbokodo. Ample parking available on-site.
+                        Address: VENUE ADDRESS
                     </p>
                 </motion.div>
 
@@ -130,7 +131,7 @@ export default function Details() {
                 >
                     <p style={styles.importantTitle}>⚠️ Important Notice</p>
                     <p style={styles.importantText}>
-                        No children allowed • Strictly by invitation • No plus one
+                        #STRICTLY BY INVITE • #NO CHILDREN AND NO PLUS ONE
                     </p>
                 </motion.div>
             </div>
@@ -275,6 +276,13 @@ const styles = {
         color: "#000000",
         fontWeight: "700",
         marginBottom: "10px",
+    },
+    locationVenue: {
+        fontSize: "1.35rem",
+        color: "#d4af37",
+        fontFamily: "'Playfair Display', serif",
+        fontWeight: "700",
+        marginBottom: "6px",
     },
     importantNote: {
         textAlign: "center",
