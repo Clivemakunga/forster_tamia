@@ -56,7 +56,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             <path
                                 d="M0,10 Q25,0 50,10 T100,10"
                                 fill="none"
-                                stroke="#d4af37"
+                                stroke="#5fa8d3"
                                 strokeWidth="2"
                             />
                         </svg>
@@ -96,7 +96,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             placeholder="Your name"
                             style={{
                                 ...styles.input,
-                                borderColor: error ? "#ef4444" : "#e5e7eb",
+                                borderColor: error ? "#ef4444" : "#d9e4f0",
                             }}
                             autoFocus
                         />
@@ -113,7 +113,7 @@ export default function WelcomeScreen({ onNameSubmit }) {
                             <path
                                 d="M0,10 Q25,20 50,10 T100,10"
                                 fill="none"
-                                stroke="#000000"
+                                stroke="#0b1f4b"
                                 strokeWidth="2"
                             />
                         </svg>
@@ -134,7 +134,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(250, 248, 243, 0.98)",
+        backgroundColor: "rgba(242, 248, 253, 0.98)",
         backdropFilter: "blur(10px)",
         display: "flex",
         alignItems: "center",
@@ -166,13 +166,13 @@ const styles = {
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2rem, 5vw, 3rem)",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "10px",
         fontWeight: "700",
     },
     subtitle: {
         fontSize: "0.95rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         lineHeight: "1.5",
         fontStyle: "italic",
         marginBottom: "20px",
@@ -180,13 +180,13 @@ const styles = {
     coupleNames: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-        color: "#d4af37",
+        color: "#5fa8d3",
         marginBottom: "10px",
         fontWeight: "700",
     },
     date: {
         fontSize: "1.125rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "40px",
         fontWeight: "500",
     },
@@ -196,7 +196,7 @@ const styles = {
     label: {
         display: "block",
         fontSize: "0.95rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "15px",
         fontWeight: "600",
     },
@@ -204,7 +204,7 @@ const styles = {
         width: "100%",
         padding: "14px 20px",
         fontSize: "1rem",
-        border: "2px solid #e5e7eb",
+        border: "2px solid #d9e4f0",
         borderRadius: "12px",
         marginBottom: "10px",
         transition: "all 0.2s ease",
@@ -228,8 +228,8 @@ const styles = {
         bottom: 0,
         opacity: 0.03,
         backgroundImage: `
-            repeating-linear-gradient(45deg, transparent, transparent 10px, #000000 10px, #000000 11px),
-            repeating-linear-gradient(-45deg, transparent, transparent 10px, #d4af37 10px, #d4af37 11px)
+            repeating-linear-gradient(45deg, transparent, transparent 10px, #0b1f4b 10px, #0b1f4b 11px),
+            repeating-linear-gradient(-45deg, transparent, transparent 10px, #5fa8d3 10px, #5fa8d3 11px)
         `,
         pointerEvents: "none",
         zIndex: -1,

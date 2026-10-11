@@ -13,7 +13,7 @@ export default function RootApp() {
     return (
         <>
             <WelcomeScreen onNameSubmit={handleNameSubmit} />
-            <div style={{ fontFamily: "'Inter', sans-serif", background: "#faf8f3", color: "#1f2937" }}>
+            <div style={{ fontFamily: "'Inter', sans-serif", background: "#f2f8fd", color: "#1b2a4a" }}>
                 <MusicButton />
                 <SectionNavigator />
 
@@ -33,7 +33,7 @@ export default function RootApp() {
 
 const styles = {
     footer: {
-        backgroundColor: "#1e40af",
+        backgroundColor: "#0b1f4b",
         padding: "40px 20px",
         textAlign: "center",
     },
@@ -45,7 +45,7 @@ const styles = {
         fontFamily: "'Playfair Display', serif",
     },
     footerSubtext: {
-        color: "#faf8f3",
+        color: "#f2f8fd",
         fontSize: "0.95rem",
     },
 };

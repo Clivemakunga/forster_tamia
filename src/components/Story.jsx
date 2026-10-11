@@ -68,13 +68,13 @@ export default function Story() {
                         <path
                             d="M0,20 Q50,10 100,20 T200,20"
                             fill="none"
-                            stroke="#000000"
+                            stroke="#0b1f4b"
                             strokeWidth="2"
                         />
                         <path
                             d="M0,20 Q50,30 100,20 T200,20"
                             fill="none"
-                            stroke="#d4af37"
+                            stroke="#5fa8d3"
                             strokeWidth="2"
                         />
                     </svg>
@@ -101,33 +101,33 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
+        background: "linear-gradient(90deg, transparent, #b8c2cf, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "15px",
     },
     subtitle: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         fontStyle: "italic",
     },
     scriptureCard: {
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         padding: "60px 40px",
         borderRadius: "24px",
         boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-        border: "3px solid #d4af37",
+        border: "3px solid #5fa8d3",
         maxWidth: "800px",
         margin: "0 auto",
     },
     scriptureReference: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "1.5rem",
-        color: "#d4af37",
+        color: "#5fa8d3",
         fontWeight: "700",
         textAlign: "center",
         marginBottom: "30px",
@@ -139,7 +139,7 @@ const styles = {
     scriptureLine: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(1.125rem, 2.5vw, 1.375rem)",
-        color: "#1f2937",
+        color: "#1b2a4a",
         lineHeight: "1.8",
         marginBottom: "12px",
         fontStyle: "italic",
@@ -147,11 +147,11 @@ const styles = {
     },
     scriptureFootnote: {
         fontSize: "1rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         textAlign: "center",
         fontStyle: "italic",
         paddingTop: "20px",
-        borderTop: "2px solid #e5e7eb",
+        borderTop: "2px solid #d9e4f0",
     },
     patternDivider: {
         display: "flex",

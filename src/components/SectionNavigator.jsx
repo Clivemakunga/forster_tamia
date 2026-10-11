@@ -100,7 +100,7 @@ export default function SectionNavigator() {
                     style={styles.envelopeContainer}
                 >
                     <motion.button
-                        whileHover={{ scale: 1.08, boxShadow: "0 6px 20px rgba(212, 175, 55, 0.5)" }}
+                        whileHover={{ scale: 1.08, boxShadow: "0 6px 20px rgba(95, 168, 211, 0.5)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={unlockNextSection}
                         style={styles.envelopeButton}
@@ -131,9 +131,9 @@ const styles = {
         zIndex: 1000,
     },
     backToStartButton: {
-        background: "rgba(212, 175, 55, 0.2)",
+        background: "rgba(95, 168, 211, 0.2)",
         backdropFilter: "blur(10px)",
-        border: "2px solid rgba(212, 175, 55, 0.5)",
+        border: "2px solid rgba(95, 168, 211, 0.5)",
         cursor: "pointer",
         padding: "10px 20px",
         display: "flex",
@@ -144,7 +144,7 @@ const styles = {
         transition: "all 0.3s ease",
         fontSize: "0.85rem",
         fontWeight: "600",
-        color: "#1f2937",
+        color: "#1b2a4a",
     },
     backIcon: {
         fontSize: "1.2rem",
@@ -165,9 +165,9 @@ const styles = {
     },
     envelopeButton: {
         position: "relative",
-        background: "rgba(212, 175, 55, 0.2)",
+        background: "rgba(95, 168, 211, 0.2)",
         backdropFilter: "blur(10px)",
-        border: "2px solid rgba(212, 175, 55, 0.5)",
+        border: "2px solid rgba(95, 168, 211, 0.5)",
         cursor: "pointer",
         padding: "14px 18px",
         display: "flex",
@@ -175,7 +175,7 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: "12px",
-        boxShadow: "0 4px 15px rgba(212, 175, 55, 0.3)",
+        boxShadow: "0 4px 15px rgba(95, 168, 211, 0.3)",
         transition: "all 0.3s ease",
         minWidth: "100px",
     },
@@ -195,7 +195,7 @@ const styles = {
     envelopeText: {
         fontSize: "0.75rem",
         fontWeight: "700",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "2px",
         fontFamily: "'Playfair Display', serif",
         lineHeight: "1.1",
@@ -203,7 +203,7 @@ const styles = {
     },
     envelopeSubtext: {
         fontSize: "0.55rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         textTransform: "uppercase",
         letterSpacing: "0.5px",
         fontWeight: "600",

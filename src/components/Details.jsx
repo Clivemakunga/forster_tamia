@@ -10,25 +10,25 @@ export default function Details() {
             icon: "📅",
             title: "Date",
             info: "22 December 2026",
-            color: "#000000",
+            color: "#0b1f4b",
         },
         {
             icon: "🕐",
             title: "Time",
             info: "09:30 AM",
-            color: "#d4af37",
+            color: "#5fa8d3",
         },
         {
             icon: "📍",
             title: "Venue",
             info: "JOYOUS KINGDOM EVENTS",
-            color: "#000000",
+            color: "#0b1f4b",
         },
         {
             icon: "💙",
             title: "Dress Code",
             info: "SHADES OF BLUE",
-            color: "#1e40af",
+            color: "#0b1f4b",
         },
     ];
 
@@ -118,7 +118,7 @@ export default function Details() {
                     <p style={styles.locationTitle}>📍 Venue Location</p>
                     <p style={styles.locationVenue}>JOYOUS KINGDOM EVENTS</p>
                     <p style={styles.locationText}>
-                        Address: VENUE ADDRESS
+                        Address: 18735 Richmond (just after Northlea High School)
                     </p>
                 </motion.div>
 
@@ -142,7 +142,7 @@ export default function Details() {
 const styles = {
     section: {
         padding: "100px 20px",
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         position: "relative",
     },
     container: {
@@ -156,18 +156,18 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
+        background: "linear-gradient(90deg, transparent, #b8c2cf, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "15px",
     },
     subtitle: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         fontStyle: "italic",
     },
     cardsGrid: {
@@ -201,12 +201,12 @@ const styles = {
     cardTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "1.5rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "10px",
     },
     cardInfo: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         fontWeight: "500",
     },
     scheduleSection: {
@@ -219,7 +219,7 @@ const styles = {
     scheduleTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2rem",
-        color: "#000000",
+        color: "#0b1f4b",
         textAlign: "center",
         marginBottom: "40px",
     },
@@ -234,26 +234,26 @@ const styles = {
         alignItems: "center",
         gap: "20px",
         padding: "20px",
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         borderRadius: "12px",
-        border: "2px solid #f5f5dc",
+        border: "2px solid #dcebf7",
     },
     scheduleTime: {
         fontSize: "1.125rem",
         fontWeight: "700",
-        color: "#d4af37",
+        color: "#5fa8d3",
         minWidth: "100px",
         fontFamily: "'Playfair Display', serif",
     },
     scheduleDivider: {
         width: "3px",
         height: "40px",
-        backgroundColor: "#000000",
+        backgroundColor: "#0b1f4b",
         borderRadius: "2px",
     },
     scheduleEvent: {
         fontSize: "1rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         fontWeight: "500",
         flex: 1,
     },
@@ -262,24 +262,24 @@ const styles = {
         padding: "30px",
         backgroundColor: "rgba(0, 0, 0, 0.03)",
         borderRadius: "16px",
-        border: "2px dashed #d4af37",
+        border: "2px dashed #5fa8d3",
     },
     noteText: {
         fontSize: "1rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         lineHeight: "1.6",
         maxWidth: "800px",
         margin: "0 auto",
     },
     locationTitle: {
         fontSize: "1.25rem",
-        color: "#000000",
+        color: "#0b1f4b",
         fontWeight: "700",
         marginBottom: "10px",
     },
     locationVenue: {
         fontSize: "1.35rem",
-        color: "#d4af37",
+        color: "#5fa8d3",
         fontFamily: "'Playfair Display', serif",
         fontWeight: "700",
         marginBottom: "6px",
@@ -287,20 +287,20 @@ const styles = {
     importantNote: {
         textAlign: "center",
         padding: "30px",
-        backgroundColor: "#fef3c7",
+        backgroundColor: "#e6f1fb",
         borderRadius: "16px",
-        border: "2px solid #d4af37",
+        border: "2px solid #5fa8d3",
         marginTop: "20px",
     },
     importantTitle: {
         fontSize: "1.25rem",
-        color: "#000000",
+        color: "#0b1f4b",
         fontWeight: "700",
         marginBottom: "10px",
     },
     importantText: {
         fontSize: "1rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         fontWeight: "600",
         lineHeight: "1.6",
     },

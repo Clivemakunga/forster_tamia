@@ -196,7 +196,7 @@ export default function RSVPModal({ isOpen, onClose }) {
                                             onChange={handleChange}
                                             style={{
                                                 ...styles.input,
-                                                borderColor: errors.fullName ? "#ef4444" : "#e5e7eb",
+                                                borderColor: errors.fullName ? "#ef4444" : "#d9e4f0",
                                             }}
                                             placeholder="e.g. John Doe"
                                         />
@@ -216,7 +216,7 @@ export default function RSVPModal({ isOpen, onClose }) {
                                             onChange={handleChange}
                                             style={{
                                                 ...styles.input,
-                                                borderColor: errors.phone ? "#ef4444" : "#e5e7eb",
+                                                borderColor: errors.phone ? "#ef4444" : "#d9e4f0",
                                             }}
                                             placeholder="+263 123 456 789"
                                         />
@@ -295,7 +295,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backgroundColor: "rgba(11, 31, 75, 0.7)",
         zIndex: 999,
         backdropFilter: "blur(5px)",
         display: "flex",
@@ -324,14 +324,14 @@ const styles = {
     modalTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2rem",
-        color: "#000000",
+        color: "#0b1f4b",
         margin: 0,
     },
     closeButton: {
         background: "none",
         border: "none",
         fontSize: "1.5rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         cursor: "pointer",
         padding: "5px 10px",
         transition: "color 0.2s ease",
@@ -348,14 +348,14 @@ const styles = {
     label: {
         fontSize: "0.95rem",
         fontWeight: "600",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "8px",
     },
     input: {
         width: "100%",
         padding: "14px 18px",
         fontSize: "1rem",
-        border: "2px solid #e5e7eb",
+        border: "2px solid #d9e4f0",
         borderRadius: "12px",
         transition: "all 0.2s ease",
         fontFamily: "'Inter', sans-serif",
@@ -376,7 +376,7 @@ const styles = {
         padding: "16px 24px",
         fontSize: "1rem",
         fontWeight: "600",
-        border: "2px solid #e5e7eb",
+        border: "2px solid #d9e4f0",
         borderRadius: "12px",
         backgroundColor: "#ffffff",
         cursor: "pointer",
@@ -384,9 +384,9 @@ const styles = {
         fontFamily: "'Inter', sans-serif",
     },
     attendanceButtonActive: {
-        backgroundColor: "#d4af37",
-        borderColor: "#d4af37",
-        color: "#000000",
+        backgroundColor: "#5fa8d3",
+        borderColor: "#5fa8d3",
+        color: "#0b1f4b",
     },
     attendanceButtonDecline: {
         backgroundColor: "#ef4444",
@@ -398,7 +398,7 @@ const styles = {
         padding: "16px 24px",
         fontSize: "1.125rem",
         fontWeight: "700",
-        backgroundColor: "#000000",
+        backgroundColor: "#0b1f4b",
         color: "#ffffff",
         border: "none",
         borderRadius: "12px",
@@ -439,17 +439,17 @@ const styles = {
     confirmationTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2rem",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "15px",
     },
     confirmationText: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         lineHeight: "1.6",
         marginBottom: "30px",
     },
     confirmationDetails: {
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         padding: "25px",
         borderRadius: "12px",
         marginBottom: "25px",
@@ -457,7 +457,7 @@ const styles = {
     },
     confirmationNote: {
         fontSize: "1rem",
-        color: "#d4af37",
+        color: "#5fa8d3",
         fontWeight: "600",
     },
 };

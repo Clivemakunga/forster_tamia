@@ -227,7 +227,7 @@ export default function RSVP() {
                             onChange={handleChange}
                             style={{
                                 ...styles.input,
-                                borderColor: errors.fullName ? "#ef4444" : "#e5e7eb",
+                                borderColor: errors.fullName ? "#ef4444" : "#d9e4f0",
                             }}
                             placeholder="Your full name"
                         />
@@ -247,7 +247,7 @@ export default function RSVP() {
                             onChange={handleChange}
                             style={{
                                 ...styles.input,
-                                borderColor: errors.phone ? "#ef4444" : "#e5e7eb",
+                                borderColor: errors.phone ? "#ef4444" : "#d9e4f0",
                             }}
                             placeholder="+263 123 456 789"
                         />
@@ -303,7 +303,7 @@ export default function RSVP() {
 const styles = {
     section: {
         padding: "100px 20px",
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         position: "relative",
     },
     container: {
@@ -317,18 +317,18 @@ const styles = {
     decorativeLine: {
         width: "100px",
         height: "3px",
-        background: "linear-gradient(90deg, transparent, #d4af37, transparent)",
+        background: "linear-gradient(90deg, transparent, #b8c2cf, transparent)",
         margin: "0 auto 20px",
     },
     title: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "15px",
     },
     subtitle: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         fontStyle: "italic",
     },
     form: {
@@ -350,14 +350,14 @@ const styles = {
         display: "block",
         fontSize: "0.95rem",
         fontWeight: "600",
-        color: "#1f2937",
+        color: "#1b2a4a",
         marginBottom: "8px",
     },
     input: {
         width: "100%",
         padding: "14px 18px",
         fontSize: "1rem",
-        border: "2px solid #e5e7eb",
+        border: "2px solid #d9e4f0",
         borderRadius: "12px",
         transition: "all 0.2s ease",
         fontFamily: "'Inter', sans-serif",
@@ -367,7 +367,7 @@ const styles = {
         width: "100%",
         padding: "14px 18px",
         fontSize: "1rem",
-        border: "2px solid #e5e7eb",
+        border: "2px solid #d9e4f0",
         borderRadius: "12px",
         transition: "all 0.2s ease",
         fontFamily: "'Inter', sans-serif",
@@ -419,17 +419,17 @@ const styles = {
     confirmationTitle: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "2.5rem",
-        color: "#000000",
+        color: "#0b1f4b",
         marginBottom: "20px",
     },
     confirmationText: {
         fontSize: "1.125rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         marginBottom: "30px",
         lineHeight: "1.6",
     },
     confirmationDetails: {
-        backgroundColor: "#faf8f3",
+        backgroundColor: "#f2f8fd",
         padding: "25px",
         borderRadius: "12px",
         marginBottom: "25px",
@@ -437,7 +437,7 @@ const styles = {
     },
     confirmationNote: {
         fontSize: "1rem",
-        color: "#d4af37",
+        color: "#5fa8d3",
         fontWeight: "600",
     },
     contactsGrid: {
@@ -453,10 +453,10 @@ const styles = {
         padding: "18px 24px",
         backgroundColor: "#ffffff",
         borderRadius: "16px",
-        border: "2px solid #d4af37",
-        boxShadow: "0 4px 15px rgba(212, 175, 55, 0.15)",
+        border: "2px solid #5fa8d3",
+        boxShadow: "0 4px 15px rgba(95, 168, 211, 0.15)",
         textDecoration: "none",
-        color: "#1f2937",
+        color: "#1b2a4a",
     },
     contactIcon: {
         fontSize: "1.75rem",
@@ -467,7 +467,7 @@ const styles = {
     },
     contactName: {
         fontSize: "0.85rem",
-        color: "#6b7280",
+        color: "#5a6b85",
         fontWeight: "600",
         textTransform: "uppercase",
         letterSpacing: "0.5px",
@@ -475,7 +475,7 @@ const styles = {
     contactNumber: {
         fontSize: "1.25rem",
         fontWeight: "700",
-        color: "#000000",
+        color: "#0b1f4b",
         fontFamily: "'Playfair Display', serif",
     },
     quoteCard: {
@@ -485,19 +485,19 @@ const styles = {
         backgroundColor: "#ffffff",
         borderRadius: "20px",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)",
-        border: "1px solid rgba(212, 175, 55, 0.3)",
+        border: "1px solid rgba(95, 168, 211, 0.3)",
     },
     quoteText: {
         fontFamily: "'Playfair Display', serif",
         fontSize: "clamp(1.1rem, 2.5vw, 1.35rem)",
-        color: "#d4af37",
+        color: "#5fa8d3",
         fontStyle: "italic",
         fontWeight: "600",
         marginBottom: "12px",
     },
     presenceText: {
         fontSize: "1.05rem",
-        color: "#1f2937",
+        color: "#1b2a4a",
         fontWeight: "500",
         marginBottom: "20px",
     },
@@ -508,20 +508,20 @@ const styles = {
         justifyContent: "center",
     },
     noticeTag: {
-        backgroundColor: "#fef3c7",
-        color: "#92400e",
+        backgroundColor: "#e6f1fb",
+        color: "#0b1f4b",
         padding: "8px 16px",
         borderRadius: "20px",
         fontSize: "0.85rem",
         fontWeight: "700",
         letterSpacing: "0.5px",
-        border: "1px solid #fde68a",
+        border: "1px solid #b8d6ee",
     },
     editResponseButton: {
         marginTop: "20px",
         backgroundColor: "transparent",
-        border: "1px solid #d4af37",
-        color: "#d4af37",
+        border: "1px solid #5fa8d3",
+        color: "#5fa8d3",
         borderRadius: "20px",
         padding: "8px 20px",
         fontSize: "0.85rem",
